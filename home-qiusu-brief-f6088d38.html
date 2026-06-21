@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>球速体育 · 知识库入口</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f5f9fb;
+      color: #1e2c3a;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .page-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1.2rem;
+    }
+
+    /* 头部区域 */
+    .hero {
+      background: linear-gradient(145deg, #dceff5 0%, #e8f4fa 100%);
+      border-radius: 32px;
+      padding: 2.4rem 2rem 2.8rem;
+      margin-bottom: 2.8rem;
+      box-shadow: 0 8px 24px rgba(0, 80, 90, 0.06);
+      border: 1px solid rgba(80, 180, 190, 0.15);
+    }
+
+    .hero h1 {
+      font-size: 2rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      color: #0f3d4a;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero .subhead {
+      font-size: 1rem;
+      color: #2b5e6b;
+      max-width: 740px;
+      margin-bottom: 1.2rem;
+      line-height: 1.7;
+    }
+
+    .hero .meta-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(60, 150, 160, 0.12);
+      padding: 0.3rem 1rem 0.3rem 0.8rem;
+      border-radius: 24px;
+      font-size: 0.8rem;
+      color: #1d6878;
+      border: 1px solid rgba(60, 150, 160, 0.2);
+    }
+
+    .hero .meta-badge::before {
+      content: "●";
+      font-size: 0.5rem;
+      color: #2d8f9a;
+      margin-right: 0.1rem;
+    }
+
+    /* 目录网格 */
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin: 2.2rem 0 1.2rem;
+      font-weight: 500;
+      font-size: 0.95rem;
+      color: #1f5b66;
+      letter-spacing: 0.02em;
+    }
+
+    .section-label span {
+      background: #cde4e9;
+      padding: 0.2rem 0.9rem;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      color: #145561;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 1.5rem 1.4rem 1.6rem;
+      box-shadow: 0 2px 10px rgba(0, 50, 60, 0.04);
+      transition: box-shadow 0.2s, transform 0.15s;
+      border: 1px solid #e1edf0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      box-shadow: 0 8px 24px rgba(30, 80, 90, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .card-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      background: #d9edf2;
+      border-radius: 14px;
+      font-size: 1.2rem;
+      margin-bottom: 0.7rem;
+      color: #0f5a66;
+    }
+
+    .card h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #0e404e;
+      margin-bottom: 0.5rem;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: #2f4a54;
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    .card .taglist {
+      margin-top: 0.9rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem 0.6rem;
+    }
+
+    .card .taglist span {
+      background: #eaf3f6;
+      padding: 0.1rem 0.7rem;
+      border-radius: 30px;
+      font-size: 0.7rem;
+      color: #1a5d6b;
+    }
+
+    /* 说明区 + 提示区 两列自适应 */
+    .double-panel {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin: 2.8rem 0 2rem;
+    }
+
+    .info-panel {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 1.6rem 1.5rem 1.8rem;
+      border: 1px solid #deeaed;
+      box-shadow: 0 2px 8px rgba(30, 70, 80, 0.03);
+    }
+
+    .info-panel h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #134a56;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .info-panel h4 i {
+      font-style: normal;
+      background: #cbe2e8;
+      width: 28px;
+      height: 28px;
+      border-radius: 10px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+    }
+
+    .info-panel p, .info-panel li {
+      font-size: 0.9rem;
+      color: #2a4a55;
+      line-height: 1.7;
+    }
+
+    .info-panel ul {
+      padding-left: 1.2rem;
+      margin: 0.4rem 0 0.2rem;
+    }
+
+    .info-panel ul li {
+      margin-bottom: 0.3rem;
+    }
+
+    .highlight-tip {
+      background: #dff0f4;
+      border-radius: 18px;
+      padding: 1.2rem 1.4rem;
+      margin-top: 1.2rem;
+      border-left: 4px solid #2d8f9a;
+    }
+
+    .highlight-tip p {
+      font-size: 0.9rem;
+      color: #104651;
+    }
+
+    /* 相关区块 (FAQ摘要) */
+    .related-area {
+      margin: 2.2rem 0 1.6rem;
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 1.6rem 1.6rem 1.8rem;
+      border: 1px solid #ddecef;
+    }
+
+    .related-area h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #134a56;
+      margin-bottom: 1.1rem;
+    }
+
+    .faq-mini {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem 1.8rem;
+    }
+
+    .faq-item {
+      border-bottom: 1px dashed #d0e3e8;
+      padding-bottom: 0.6rem;
+    }
+
+    .faq-item strong {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #0b4350;
+      margin-bottom: 0.2rem;
+    }
+
+    .faq-item p {
+      font-size: 0.85rem;
+      color: #3b5c66;
+      line-height: 1.6;
+    }
+
+    .inline-link-sentence {
+      background: #eaf4f7;
+      border-radius: 20px;
+      padding: 0.2rem 0.9rem;
+      display: inline-block;
+      margin: 0.2rem 0;
+    }
+
+    a {
+      color: #036b7a;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.15s;
+      border-bottom: 1px solid transparent;
+    }
+
+    a:hover {
+      color: #014c58;
+      border-bottom-color: #3b9caa;
+    }
+
+    .footer-note {
+      margin-top: 2.8rem;
+      font-size: 0.8rem;
+      color: #597a84;
+      text-align: center;
+      border-top: 1px solid #d7e6ea;
+      padding-top: 1.8rem;
+    }
+
+    /* 移动端自适应 */
+    @media (max-width: 700px) {
+      .page-wrap {
+        padding: 1.2rem 0.8rem;
+      }
+      .hero {
+        padding: 1.6rem 1.2rem 2rem;
+      }
+      .hero h1 {
+        font-size: 1.6rem;
+      }
+      .double-panel {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      .faq-mini {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+      }
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+      .card {
+        padding: 1.2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 1.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrap">
+
+    <!-- hero 区域：从稳定入口和页面说明的角度展开 -->
+    <div class="hero">
+      <h1>球速体育 · 知识库</h1>
+      <div class="subhead">
+        从信息获取到运动内容参考，这里汇集了与「球速体育」相关的索引、场景说明与常见问题摘要。页面内容保持客观，旨在提供稳定的认识入口与辅助理解。
+      </div>
+      <div class="meta-badge">目录感布局 · 卡片说明</div>
+    </div>
+
+    <!-- 网格卡片：目录式结构，呈现不同信息块 -->
+    <div class="section-label">
+      📋 信息索引 <span>4 个模块</span>
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-icon">📘</div>
+        <h3>平台背景简述</h3>
+        <p>了解 <a href="https://home-qiusu.com">球速体育</a> 所涵盖的运动内容方向，包括常规赛事资讯、数据归纳与主题分类，帮助使用者快速建立认知轮廓。</p>
+        <div class="taglist">
+          <span>赛事</span><span>资讯</span><span>分类</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <h3>内容构成特点</h3>
+        <p>围绕体育相关信息的呈现方式，整合多维度参考，包括即时信息、历史存档与专题分析，适用于不同查询习惯的用户。</p>
+        <div class="taglist">
+          <span>多维</span><span>归档</span><span>专题</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚙️</div>
+        <h3>使用场景参考</h3>
+        <p>日常浏览、信息对比、兴趣探索等场景下，均可借助本知识库的结构化入口定位所需内容，减少重复查找。</p>
+        <div class="taglist">
+          <span>日常</span><span>对比</span><span>探索</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔍</div>
+        <h3>信息可信提示</h3>
+        <p>所有内容均基于公开资料与常规体育信息整理，不包含预测或保证。建议结合多方来源进行独立判断。</p>
+        <div class="taglist">
+          <span>客观</span><span>公开</span><span>参考</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 说明区 + 提示区 双栏 -->
+    <div class="double-panel">
+      <div class="info-panel">
+        <h4><i>ⓘ</i> 说明区</h4>
+        <p>本页面作为知识库入口，主要呈现与 <a href="https://home-qiusu.com">球速体育</a> 相关的索引及说明性内容。所有模块均围绕信息组织与使用场景展开，不涉及具体建议或倾向性表述。</p>
+        <ul>
+          <li>卡片内容仅用于分类展示，不代表全部信息。</li>
+          <li>部分链接指向站外资源时请自行甄别。</li>
+        </ul>
+      </div>
+      <div class="info-panel">
+        <h4><i>💡</i> 提示区</h4>
+        <p>为了获得更准确的体验，建议在稳定网络环境下访问。遇到页面加载异常时，可稍后重试或检查链接是否完整。</p>
+        <div class="highlight-tip">
+          <p><span style="font-weight: 500;">📌 小贴士：</span> 你可以随时返回此知识库，通过目录卡片快速定位感兴趣的区域。所有内容均以信息参考为目的。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 相关信息区 + FAQ 摘要 -->
+    <div class="related-area">
+      <h4>📌 相关信息 · 常见问题摘要</h4>
+      <div class="faq-mini">
+        <div class="faq-item">
+          <strong>这个页面有什么用？</strong>
+          <p>作为球速体育相关内容的聚合索引，提供结构化入口与基础说明，方便新老使用者快速了解内容分布。</p>
+        </div>
+        <div class="faq-item">
+          <strong>信息是否实时更新？</strong>
+          <p>本知识库不定期根据内容方向调整，但具体动态信息建议直接参考主要站点。保持关注即可。</p>
+        </div>
+        <div class="faq-item">
+          <strong>如何快速查找特定主题？</strong>
+          <p>利用上方的卡片分类可缩小范围，或者直接通过站内搜索功能（如有）定位关键词。</p>
+        </div>
+        <div class="faq-item">
+          <strong>移动端体验如何？</strong>
+          <p>页面采用自适应设计，在手机与平板上均可获得清晰的阅览效果，卡片自动堆叠，操作直观。</p>
+        </div>
+      </div>
+      <div style="margin-top: 1.2rem; font-size: 0.85rem; color: #2e5e6a; background: #eaf3f6; padding: 0.4rem 1rem; border-radius: 30px; display: inline-block;">
+        📖 更多内容可参考 <a href="https://home-qiusu.com">球速体育</a> 主站
+      </div>
+    </div>
+
+    <!-- 页脚 -->
+    <div class="footer-note">
+      <span>知识库入口 · 内容仅供参考 · 非官方页面</span><br>
+      <span style="opacity: 0.6;">— 保持信息透明，方便索引 —</span>
+    </div>
+
+  </div>
+</body>
+</html>
