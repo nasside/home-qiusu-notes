@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱游戏 · 站点知识库</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f9f6f0;
+            font-family: 'Georgia', 'Times New Roman', '宋体', 'Songti SC', serif;
+            color: #2f2e2b;
+            line-height: 1.75;
+            padding: 2rem 1.5rem;
+        }
+
+        .page {
+            max-width: 880px;
+            margin: 0 auto;
+            background: #fefcf8;
+            border-radius: 18px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+            padding: 2.5rem 2rem;
+        }
+
+        h1 {
+            font-weight: 500;
+            font-size: 2.2rem;
+            letter-spacing: 0.04em;
+            border-left: 5px solid #b7a48b;
+            padding-left: 1.1rem;
+            margin-bottom: 0.6rem;
+            color: #3d352e;
+        }
+
+        .hero-sub {
+            margin-top: -0.2rem;
+            margin-bottom: 2rem;
+            font-style: italic;
+            color: #6b5f52;
+            padding-left: 1.6rem;
+            font-size: 0.95rem;
+            border-bottom: 1px dashed #dbd3c7;
+            padding-bottom: 0.8rem;
+        }
+
+        .intro {
+            margin-bottom: 2.4rem;
+            padding: 1.2rem 1.6rem;
+            background: #f4efe7;
+            border-radius: 12px;
+            font-size: 1rem;
+        }
+
+        .intro p {
+            margin-bottom: 0.9rem;
+        }
+
+        .intro p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin: 2.4rem 0 1rem 0;
+            padding-bottom: 0.3rem;
+            border-bottom: 2px solid #e0d6ca;
+            color: #3d352e;
+        }
+
+        .section-title small {
+            font-weight: 400;
+            font-size: 0.8rem;
+            color: #7d7164;
+            margin-left: 0.6rem;
+        }
+
+        .dir-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .dir-card {
+            background: #faf7f2;
+            padding: 1.2rem 1.2rem 1.4rem 1.2rem;
+            border-radius: 14px;
+            border: 1px solid #e6ddd2;
+            transition: box-shadow 0.2s ease;
+        }
+
+        .dir-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .dir-card h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #4d4239;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.02em;
+        }
+
+        .dir-card p {
+            font-size: 0.9rem;
+            color: #5e5549;
+            margin-bottom: 0.4rem;
+        }
+
+        .dir-card .tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            background: #ddd6cb;
+            color: #3d352e;
+            padding: 0.1rem 0.7rem;
+            border-radius: 20px;
+            margin-top: 0.4rem;
+        }
+
+        .notice-box {
+            background: #efeade;
+            border-left: 5px solid #b5a187;
+            padding: 1.2rem 1.6rem;
+            margin: 1.8rem 0;
+            border-radius: 0 12px 12px 0;
+            font-style: normal;
+        }
+
+        .notice-box strong {
+            color: #4a3f35;
+        }
+
+        .info-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem 1.2rem;
+            margin: 1.2rem 0 1.8rem;
+            background: #f6f2ea;
+            padding: 1rem 1.4rem;
+            border-radius: 14px;
+        }
+
+        .info-item {
+            font-size: 0.92rem;
+            color: #4d4239;
+        }
+
+        .info-item span {
+            font-weight: 500;
+            color: #3d352e;
+        }
+
+        .faq-mini {
+            margin: 2rem 0;
+        }
+
+        .faq-q {
+            font-weight: 500;
+            margin: 0.8rem 0 0.2rem 0;
+            color: #3d352e;
+        }
+
+        .faq-a {
+            color: #5e5549;
+            padding-left: 1.2rem;
+            border-left: 2px solid #d6cdc0;
+            margin-bottom: 0.7rem;
+            font-size: 0.95rem;
+        }
+
+        .inline-link {
+            color: #6b5f52;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-color: #c7bbad;
+            font-weight: 400;
+        }
+
+        .inline-link:hover {
+            color: #3d352e;
+            text-decoration-color: #3d352e;
+        }
+
+        .footnote {
+            margin-top: 2.8rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid #e0d6ca;
+            font-size: 0.85rem;
+            color: #7d7164;
+            text-align: right;
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding: 1rem 0.8rem;
+            }
+
+            .page {
+                padding: 1.5rem 1rem;
+            }
+
+            h1 {
+                font-size: 1.7rem;
+                padding-left: 0.8rem;
+            }
+
+            .dir-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .intro {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <h1>爱游戏</h1>
+        <div class="hero-sub">一个关于游戏站点与内容的整理索引</div>
+
+        <div class="intro">
+            <p>如果你偶然发现 <a href="https://portalsite-igame.com" class="inline-link">爱游戏</a> 这个站点，第一印象可能是「这里聚合了什么？」简单来说，它更像一个围绕游戏话题搭建的微型入口：你可以在这里找到一些与游戏相关的信息归类、背景介绍，或是顺着链接前往更具体的内容页。</p>
+            <p>这个页面作为知识库式的总览，目的是帮你快速判断这个站点对你是否有用——它收录了哪些方向，覆盖了什么类型，以及你可以期待从中读到什么。</p>
+        </div>
+
+        <div class="section-title">
+            目录 · 主要分区
+            <small>内容结构概览</small>
+        </div>
+
+        <div class="dir-grid">
+            <div class="dir-card">
+                <h3>游戏背景 · 简述</h3>
+                <p>对站点所涉及的游戏或主题做基础介绍，包括设定、风格与核心机制。</p>
+                <span class="tag">说明区</span>
+            </div>
+            <div class="dir-card">
+                <h3>特性与亮点</h3>
+                <p>列出值得注意的设计、玩法或内容特点，帮助理解这个游戏或站点的独特之处。</p>
+                <span class="tag">说明区</span>
+            </div>
+            <div class="dir-card">
+                <h3>常见疑问摘要</h3>
+                <p>收录一些用户可能会问的基础问题，例如「从哪里开始？」「需要什么准备？」</p>
+                <span class="tag">提示区</span>
+            </div>
+            <div class="dir-card">
+                <h3>相关信息与链接</h3>
+                <p>聚合站点中提到的外部资源、关联站点或延伸阅读。</p>
+                <span class="tag">相关信息区</span>
+            </div>
+        </div>
+
+        <div class="notice-box">
+            <strong>提示</strong> · 如果你只是想快速确认这个站点是否包含你感兴趣的内容，可以先浏览「特性与亮点」和「常见疑问摘要」两个分区。目录卡片中的标签可以帮助你定位内容类型。
+        </div>
+
+        <div class="section-title">
+            说明区 · 关于<a href="https://portalsite-igame.com" class="inline-link">爱游戏</a>站点的内容方向
+        </div>
+
+        <p style="margin-bottom:0.8rem;">这个站点的内容并不追求大而全，而是倾向于精选与梳理。从目前收录的信息来看，大致可以归纳为以下几个层面：</p>
+
+        <div class="info-list">
+            <div class="info-item"><span>介绍类</span> — 游戏世界观、角色、背景故事简述</div>
+            <div class="info-item"><span>特性类</span> — 玩法机制、美术风格、叙事特点</div>
+            <div class="info-item"><span>场景类</span> — 典型游戏场景、氛围、交互方式</div>
+            <div class="info-item"><span>提示类</span> — 适合新手的入门建议或注意事项</div>
+        </div>
+
+        <p style="margin-bottom:1.2rem;">每个方向下都配有简短的文字说明，没有冗长的评测，更像是一份可以快速翻阅的「内容卡片」。如果你对某个方向感兴趣，可以直接在站点内找到对应的详细介绍页。</p>
+
+        <div class="section-title">
+            提示区 · 使用前可以留意的几点
+        </div>
+
+        <ul style="margin-bottom:1.8rem; padding-left:1.6rem; color:#5e5549;">
+            <li style="margin-bottom:0.4rem;">站点的内容以文字介绍为主，适合想要快速了解游戏背景或设定的读者。</li>
+            <li style="margin-bottom:0.4rem;">部分链接指向外部页面，建议在浏览器中打开，以获取完整排版。</li>
+            <li style="margin-bottom:0.4rem;">如果你已经熟悉该游戏，也可以把这里当作一个轻量的备忘索引。</li>
+        </ul>
+
+        <div class="section-title">
+            相关信息区 · 延伸与关联
+        </div>
+
+        <p style="margin-bottom:0.6rem;">以下信息来自站点内部或与之相关的公开内容，整理在此方便参考：</p>
+        <div style="display:flex; flex-wrap:wrap; gap:0.4rem 1.2rem; margin-bottom:1.2rem; color:#5e5549; font-size:0.9rem;">
+            <span>· 站点主题：游戏介绍与索引</span>
+            <span>· 内容语言：中文</span>
+            <span>· 更新频率：不定期补充</span>
+            <span>· 适用人群：游戏爱好者、探索型读者</span>
+        </div>
+
+        <div class="faq-mini">
+            <div class="faq-q">问：这个页面本身是网站的全部内容吗？</div>
+            <div class="faq-a">不是。这个 index 页是一个知识库式的入口，帮助你先了解站点的内容结构。更具体的介绍页和细分内容需要通过链接进一步浏览。</div>
+
+            <div class="faq-q">问：我可以从哪里找到更多详细信息？</div>
+            <div class="faq-a">你可以点击页面中的链接，或者直接访问 <a href="https://portalsite-igame.com" class="inline-link">爱游戏</a> 的主页，站点内部会有更完整的分类和文章。</div>
+
+            <div class="faq-q">问：这些内容是否包含主观评价？</div>
+            <div class="faq-a">内容以事实介绍和客观描述为主，不包含夸张宣传或诱导性表述。你可以根据自己的兴趣判断是否进一步阅读。</div>
+        </div>
+
+        <div class="footnote">
+            <span>索引页 · 内容依据站点公开信息整理</span>
+        </div>
+    </div>
+</body>
+</html>
